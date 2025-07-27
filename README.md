@@ -26,16 +26,31 @@ Other versions are present for reference or legacy purposes and should not be us
 
 ```
 .
-├── baseline/
-    ├── generator/
-    │   └── generator.py        # T5 model to generate answer
-    └── retriever/
-        └── retriever.py        # Handles document parsing, chunking, embedding, FAISS retrieval
-    ├── data/
-        ├── logs.jsonl              # Stores question-answer logs
-        └── test_inputs.json        # Test questions
-    ├── retriever_index/            # Saved index and metadata
-    ├── pipeline.py                 # Main entry point
+baseline/
+├── retriever/
+│ ├── enhanced_retriever.py # Enhanced retriever with metadata filtering and advanced chunking
+│ ├── retriever.py # Baseline retriever
+│ └── software.json # Example review data
+├── generator/
+│ ├── enhanced_generator.py # Enhanced generator with custom prompts and query type detection
+│ └── generator.py # Baseline generator
+├── sentiment/
+│ └── sentiment_filter.py # Sentiment analysis using Twitter RoBERTa and fallback keywords
+├── enhanced_pipeline.py # Main enhanced pipeline integrating all modules
+├── pipeline.py # Baseline pipeline
+├── data/
+│ ├── enhanced_logs.jsonl # Logs for enhanced pipeline
+│ ├── enhanced_test_inputs.json # Test cases for enhanced pipeline
+│ ├── logs.jsonl # Logs for baseline pipeline
+│ └── test_inputs.json # Test cases for baseline pipeline
+├── retriever_index/
+│ ├── data.pkl # Serialized data for retrieval
+│ └── faiss.index # FAISS index for fast similarity search
+README.md # Project documentation
+README_ENHANCED.md # Detailed enhanced system documentation
+requirements_enhanced.txt # Python dependencies for enhanced system
+runtest.py # Script to run tests
+logger.py # Logging utility
 
 ```
 
@@ -79,7 +94,7 @@ Add your questions to `data/test_inputs.json`:
 ## 🚀 Run the Pipeline
 
 ```bash
-python pipeline.py
+python runtest.py
 ```
 
 Output:
